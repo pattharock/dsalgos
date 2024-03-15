@@ -1,3 +1,6 @@
+from os import spawnve
+
+
 def recursion(n):
     if n < 0:
         return -1
@@ -28,15 +31,32 @@ def tabulation(n):
         dp[i] = dp[i-1] + dp[i-2]
     return dp[-1]
 
+def spaceOptimised(n):
+    prev = 1
+    prev2 = 0
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    for i in range(n - 1):
+        curr = prev + prev2
+        prev2 = prev
+        prev = curr
+    return prev
+
 def fibonacci(n):
     return recursion(n)
 
+def prettyPrint(n):
+    print(f"[RECURSION] fibonacci({n}): {recursion(n)}")
+    print(f"[MEMOIZATION] fibonacci({n}): {memoization(n, {})}")
+    print(f"[TABULATION] fibonacci({n}): {tabulation(n)}")
+    print(f"[SPACE OPTIMISED] fibonacci({n}): {spaceOptimised(n)}")
+    print()
+
 def main():
     n = int(input("N: "))
-    print(f"[RECURSION] fib({n}): {recursion(n)}")
-    print(f"[MEMOIZATION] fib({n}): {memoization(n, {})}")
-    print(f"[TABULATION] fib({n}): {tabulation(n)}")
-    print()
+    prettyPrint(n)
 
 if __name__ == "__main__":
     main()
