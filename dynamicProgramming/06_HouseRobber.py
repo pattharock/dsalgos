@@ -50,6 +50,7 @@ def prettyPrint(n, inputList):
     print(f"[TABULATION] maxNonAdjacentElementsSum({n}): {houseRobberTabulation(n, inputList)}")
     print(f"[SPACE OPTIMISATION] maxNonAdjacentElementsSum({n}): {houseRobberTabulation(n, inputList)}")
     print()
+
 def main():
     inputList = []
     n = int(input("N: "))
